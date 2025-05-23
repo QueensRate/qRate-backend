@@ -3,6 +3,7 @@ dotenv.config(); //configures the package so I can load my .env file into proces
 
 import app from "./server.js"; //importing the express app from server.js
 import mongodb from "mongodb"; //importing the mongodb driver for node.js
+import CourseReviewsDAO from "./dao/CourseReviewsDAO.js" //importing the reviews 
 
 /* Extracting the MongoClient class from the mongodb package. This way, we can connect to the MongoDB database */
 const MongoClient = mongodb.MongoClient;
@@ -31,6 +32,7 @@ MongoClient.connect(
 
     //if the MongoDB connection succeeds, then...
     .then(async client => { 
+        await CourseReviewsDAO.injectDB(client)
         app.listen(port, () => { //we're going to start the Express server using app.listen (app comes from server.js remember we imported it)
             console.log(`listening on port ${port}`) //log a message saying the server is up
         })
