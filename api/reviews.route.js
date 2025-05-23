@@ -1,4 +1,5 @@
 import express from "express" //importing the express library in order to use Express features like routing and middleware
+import ReviewsCtrl from "./reviews.controller.js" //importing all the functions like apiGetReviews from the controller file
 
 /* 
 Creating a router instance, which is basically an Express mini app that only handles routes. I can 
@@ -7,13 +8,28 @@ routing, so instead of putting all my routes in server.js, I'm going to break th
 */
 const router = express.Router() 
 
-/* 
-This is defining a route that listens for GET requests on /.
 
-(req, res) => res.send("Hello world") is the handler function where req is the request object, res is the respond object
-This code will send the string "Hello World" when someone hits this route
+/* Sets up a GET route for URLs like /api/v1/reviews/movie/Cars2. id is a route paramter, 
+it can match any course ID. This will return all the reviews for a specific movie */
+router.route("/course/:id").get(ReviewsCtrl.apiGetReviews)
+
+/* Sets up a POST route for /api/v1/reviews/new. This is where the frontend can submit a new
+review by sending a JSON body (eg. name, review, movieId). */
+router.route("/new").post(ReviewsCtrl.apiPostReview)
+
+/* 
+Handles GET, PUT, DELETE requests for a specific review ID, which is different from course id. 
+You'll be able to:
+
+GET /api/v1/reviews/abc123 -> retrieves a single review
+PUT /api/v1/reviews/abc123 -> updates that review
+DELETE /api/v1/reviews/abc123 -> delete that specific review
+
 */
-router.route("/").get((req, res) => res.send("Hello world"))
+router.route("/:id")
+    .get(ReviewsCtrl.apiGetReview)
+    .put(ReviewsCtrl.apiUpdateReview)
+    .delete(ReviewsCtrl.apiDeleteReview)
 
 //exports this app so it can be imported in other js files and connected in my main app
 export default router
