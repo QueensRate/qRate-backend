@@ -4,7 +4,7 @@ import cors from "cors"; // bringing in CORS middleware, so that frontend can ta
 /* 
 we will have all the review-related routes in the file route.js for modularity purposes. Here we're going
 to need to import it into our server.js file. */
-import reviews from ".api/reviews/route.js";
+import reviews from "./api/reviews.route.js";
 
 //creating an instance of the express application...app is the web server where we're going to define what happens when requests come in
 const app = express();  
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use("/api/v1/reviews", reviews);
 
 /* This is the "catch all" route, where it will run if non of the other routes matched. Responds with a 404 Not Found status, and a JSON error message */
-app.use("*", (req, res) => 
+app.use("/", (req, res) => 
     res.status(404).json({error: "not found"}))
 
 //this will make this express app available to be imported in another file (ex. like index.js)
