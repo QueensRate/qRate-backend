@@ -3,8 +3,7 @@ import CoursesDAO from "../dao/CoursesDAO.js";
 export default class CoursesController {
 
     static async apiGetCourses(req, res, next) {
-        console.log("🔍 GET /api/v1/courses hit");
-
+        
         try {
             const courses = await CoursesDAO.getCourses();
             if (!courses) {
