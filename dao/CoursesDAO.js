@@ -19,7 +19,7 @@ export default class CoursesDAO {
       const courseStats = await reviewsCollection.aggregate([
         {
           $group: {
-            _id: "$courseCode",
+            _id: "$courseId",
             num_reviews: { $sum: 1 },
             avg_rating: { $avg: "$overallRating" },
             difficulty: { $avg: "$difficulty" },
