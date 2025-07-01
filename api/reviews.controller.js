@@ -4,37 +4,54 @@ import CourseReviewsDAO from "../dao/CourseReviewsDAO.js" //importing my DAO fil
 //defining the controller class and exporting it so we can import it in our route.js file
 export default class ReviewsController {
 
-    //controller method to handle POST requests for new course reviews
     static async apiPostReview(req, res, next) {
-        //try block
         try {
-            //reading the courseId, reviewContent, and username from the POST request body
-            const courseId = req.body.courseId
-            const review = req.body.review 
-            const user = req.body.user 
-
-            //logging the courseId to server console for debugging purposes
-            console.log('courseId', courseId)
-
-            //calling the DAO function "addReview" and passes the data from the POST request body to it
-            //await will pause this line until addReview() finishes (i.e returning a promise)
-            //reviewResponse will hold whatever DAO returns, whether it is success, failure, insertedID, etc.
-            const reviewResponse = await CourseReviewsDAO.addReview (
-                courseId,
-                user,
-                review
-            )
-            //sends JSON response back to the client with a success status
-            res.json({status: "success"})
-        } 
-        //catch block
-        catch (e) {
-
-            //if anything in the try block fails (e.g DB error, undefined field), the error is caught here
-            //Code status 500 means that there is an internal server error
-            res.status(500).json({error: e.message })
+          const {
+            courseCode,
+            courseName,
+            instructor,
+            term,
+            overallRating,
+            difficulty,
+            usefulness,
+            workload,
+            teaching,
+            comment,
+            user, // e.g., user = { name: "John Doe", userId: "abc123" }
+          } = req.body;
+      
+          // Validate required fields
+          if (
+            !courseCode || !instructor || !term || !comment || comment.trim().length < 50
+          ) {
+            return res.status(400).json({ error: "Missing or invalid required fields" });
+          }
+      
+          const review = {
+            courseCode,
+            courseName,
+            instructor,
+            term,
+            overallRating: overallRating?.[0] || 0,
+            difficulty: difficulty?.[0] || 0,
+            usefulness: usefulness?.[0] || 0,
+            workload: workload?.[0] || 0,
+            teaching: teaching?.[0] || 0,
+            comment,
+            timestamp: new Date(), // optional: store when the review was created
+          };
+      
+          const reviewResponse = await CourseReviewsDAO.addReview(
+            courseCode, // or use a unique courseId if you have one
+            user,
+            review
+          );
+      
+          res.json({ status: "success" });
+        } catch (e) {
+          res.status(500).json({ error: e.message });
         }
-    }
+      }      
 
     //controller method to handle GET requests for course reviews
     static async apiGetReview(req, res, next) {
