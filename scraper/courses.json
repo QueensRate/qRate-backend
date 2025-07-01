@@ -10,9 +10,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 38\nEngineering Design 13",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Understand the basic circuit components and the fundamental laws of circuit theories (KCL, KVL, Ohm's law,...).\n2. Derive the mathematical model of resistive, and first and second order circuits.\n3. Solve resistive circuits using techniques such as current voltage divider, mesh-current, node-voltage, Thevenin and Norton, superposition...).\n4. Solve the initial condition and step responses of RC, RL and RLC circuits.\n5. Solve sinusoidal steady-state response of RL, RC, and RLC circuits using techniques such as mesh-current, node-voltage, Thevenin and Norton, superposition.\n6. Calculate power consumption in RL, RC and RLC circuits under steady-state sinusoidal excitation.\n7. Investigate the initial and step response of RL, RC and RLC circuit.\n8. Investigate the sinusoidal steady-state response of RL, RC and RLC circuits and power consummation is such circuits.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
   },
   {
     "code": "ELEC 224",
@@ -25,9 +28,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 12\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 33\nEngineering Design 0",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Classify systems based on their properties: in particular, to understand and exploit the implications of linearity, time-invariance, causality, memory, and bounded-input, bounded-out (BIBO) stability.\n2. Understand the concepts of convolution, impulse response and transfer function and how they apply to continuous-time linear time-invariant systems.\n3. Determine Fourier transforms for continuous-time, and understand how to interpret and plot Fourier transform magnitude and phase functions.\n4. Use Laplace transform and its inverse to solve differential equations and to determine the response of linear time-invariant systems to known inputs.\n5. Derive the Fourier Transform and use it as a tool for frequency-domain analysis.\n6. Simulate signals and systems using modern computer software packages.\n7. Use linear systems tools, especially transform analysis and convolution, to analyze and predict the behavior of linear systems.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 231",
@@ -40,9 +46,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 21\nNatural Sciences 11\nComplementary Studies 0\nEngineering Science 10\nEngineering Design 0",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Compute the general or particular solutions to linear and nonlinear differential equations, and systems of differential equations to model practical applications in electrical and computer engineering.\n2. Understand the implications of the existence and uniqueness theorem and linear independence/dependence properties of solutions to differential equations.\n 3. Develop mathematical models describing physical/natural phenomena, with emphasis on problem based learning using authentic real-world electrical and computer engineering applications.\n4. Use the method of Laplace transform to solve differential equations with applications in communication, signal processing, control systems.\n5. Model a RLC (resistor, inductor, capacitor) circuit using ordinary differential equations.\n6. Numerically solve differential equations to provide tractable solutions for complex engineering systems.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 232",
@@ -55,9 +64,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 42\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 0\nEngineering Design 0",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Understand vector calculus fundamentals and computing line/surface/volume integrals for different applications in the context of electrical engineering.\n2. Understand concepts and applications of divergence, curl, Green’s and Stokes’ Theorems on real-world electrical engineering scenarios in practical settings.\n3. Evaluate contour integrals using residue theory in electrical engineering applications.\n4. Compute harmonic conjugates of harmonic functions in electrical circuits, signal processing and controls.\n5. Solve algebraic equations involving complex numbers in electrical engineering.\n6. Compute Taylor and Laurent expansions of complex analytic functions typical in electrical engineering problems (e.g. small-signal approximations for transistor models BJTs or MOSFETs).",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 252",
@@ -70,9 +82,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 36\nEngineering Design 15",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Describe semiconductor behaviour and terminal characteristics of junction diodes and transistors.\n2. Construct linearized models of nonlinear semiconductor devices, including diodes and transistors, and apply them to analysis of circuits.\n3. Conduct large signal analysis of circuits using operational amplifiers, diodes and transistors.\n4. Design circuits for practical applications including power conversion, and digital and analog signal.\n5. Use computer-aided design tools to analyze and optimize practical electronic circuits.\n6. Implement and characterize electronic circuits using fundamental test equipment.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 270",
@@ -85,9 +100,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 31\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 11\nEngineering Design 0",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Identify when a mathematical proposition is a tautology, contradiction, or logical equivalence.\n2. Determine whether a relation is an equivalence relation or whether a relation is a partial order.\n3. Use mathematical induction as a proof technique to prove a result.\n4. Apply the Pigeonhole Principle in mathematical proofs.\n5. Be able to compute an inverse in modular arithmetic and know how to use it to solve linear congruences.\n6. Apply counting techniques such as inclusion-exclusion, combinations and permutations to count large groups of objects.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 271",
@@ -100,9 +118,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 21\nEngineering Design 27",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Represent combinational logic building blocks such as multiplexers, encoders, and decoders in algebraic form, in schematic form, and in the syntax of a hardware design language for computer-aided logic synthesis.\n2. Represent latches and flip-flops for storing information in schematic form and in hardware-design-language syntax and describe the timing behavior of flip-flops.\n3. Optimize a combinational logic function with Karnaugh maps, both with and without don’t-care valuations.\n4. Design a finite-state machine from a given state diagram by directly deriving and optimizing the next-state and output logic, and by generating a behavioural description in a hardware design language for computer- aided logic synthesis.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 274",
@@ -115,9 +136,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 26\nEngineering Design 22",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Understand instruction set architecture to support arithmetic, memory-access, and program branching operations.\n2. Understand internal semiconductor memory architecture and the design of basic cache and memory organizations.\n3. Use register-transfer notation to specify cycle-by-cycle logic behavior of instruction execution in a basic five-stage processing unit.\n4. Write a subroutine-based assembly-language program for specified data processing and input/output operations.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 278",
@@ -130,9 +154,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 12\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 24\nEngineering Design 12",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Identify and describe the standard data structures and algorithms.\n2. Describe fundamental techniques for comparing alternative data structures and algorithms.\n3. Implement fundamental data structures using the C programming language.\n4. Select the appropriate data structure or algorithm to efficiently solve a given computing problem.\n5. Analyze a given computing problem and solve it using suitable data structures and algorithms.\n6. Examine solutions using critical thinking to increase efficiency and robustness of a given computing problem solution.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 279",
@@ -145,9 +172,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 26\nEngineering Design 22",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Demonstrate understanding of fundamental concepts of object-oriented programming.\n2. Design and implement object-oriented programs.\n3. Debug and test object-oriented programs.\n4. Develop basic programming skills in Java.\n5. Implement programs with graphical user interface.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 280",
@@ -160,9 +190,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 27\nComplementary Studies 0\nEngineering Science 18\nEngineering Design 0",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Determine electrostatic fields using Coulomb's law and Gauss's law.\n2. Determine magnetostatic fields using Biot-Savart's law and Ampere's law.\n3. Calculate voltage or current across transverse electromagnetic (TEM) transmission lines.\n4. Calculate the induced voltage in time-varying electromagnetic fields using Maxwell's equations.\n5. Analyze the transmission line parameters using various techniques including Smith chart, and calculate transient voltage and current of the transmission line.\n6. Calculate the gradient, divergence, and curl of various scalar and vector fields.\n7. Calculate the gradient, divergence, and curl of various scalar and vector fields.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 290",
@@ -175,9 +208,12 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 18\nEngineering Science 0\nEngineering Design 42",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "1. Develop and apply excellent written communication skills.\n2. Develop and apply excellent verbal communication skills.\n3. Develop and apply excellent presentation skills.\n4. Use graphics and figures to effectively support written and verbal communication.\n5. Reflect on project activities and provide insight related to project and learning scenarios.\n6. Apply information research, assessment, and management concepts in engineering design.\n7. Design creative solution(s) for open-ended, complex problems, applying engineering principles and theories from courses in other disciplines where applicable.\n8. Apply design processes and tools for problem definition, idea generation, and decision making.\n9. Make design decisions using financial factors, environmental factors, social factors, and public interests.\n10. Consider equity, diversity, inclusion, and indigenization during the design process.\n11. Incorporate the core principles of project management into the development of design solutions (including frameworks, objectives, scheduling, work breakdown, milestones, and life cycle).\n12. Discuss engineering as a regulated profession, including reference to relevant engineering regulations/codes/standards, ethics, equity, health and safety.\n13. Discuss professional/technical associations in engineering and discipline.\n14. Discuss the role of ethics in a project with reference to real-world engineering applications.\n15. Demonstrate effective teaming skills.\n16. Demonstrate ability to identify and to address personal educational needs.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  },
  {
     "code": "ELEC 292",
@@ -190,8 +226,11 @@
     "CEAB Units": "CEAB Units:\nMathematics 0\nNatural Sciences 0\nComplementary Studies 0\nEngineering Science 18\nEngineering Design 18",
     "offering_faculty": "Smith Engineering",
     "Course Learning Outcomes": "CLOs coming soon; please refer to your course syllabus in the meantime.",
-    "num_reviews": " " , 
-    "num_rating": " ",
-    "professor": " "
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  }
 ]
