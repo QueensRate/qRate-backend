@@ -10,8 +10,12 @@ client = MongoClient(os.getenv("MONGO_URI"))
 db = client["qrate"]
 courses_collection = db["courses"]
 
+# Always resolve path relative to this script's location
+base_dir = os.path.dirname(__file__)  # directory containing this script
+json_path = os.path.join(base_dir, "courses.json")
+
 # Load courses.json
-with open("scraper/courses.json", "r", encoding="utf-8") as f:
+with open(json_path, "r", encoding="utf-8") as f:
     courses = json.load(f)
 
 # Insert or update courses
