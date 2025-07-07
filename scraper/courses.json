@@ -245,5 +245,45 @@
     "difficulty": null,
     "usefulness": null,
     "workload": null
+ },
+
+ {
+    "code": "ELEC 324",
+    "title": "Discrete-Time Signals and Systems",
+    "units": "4.00",
+    "description": "This second course on signals and systems studies basic concepts and techniques for analysis and modeling of discrete-time signals and systems. The topics of this course are: sampling, reconstruction, and digitization; representations and properties of discrete-time signals and systems; linear time-invariant (LTI) systems; difference equations; discrete Fourier series; discrete-time Fourier transform; discrete Fourier transform; z-transform; analysis of LTI systems; filtering and spectral analysis. Computational realizations of the analysis tools and their applications are explored in the laboratory.",
+    "hourly_breakdown": "Lec: Yes, Lab: Yes, Tut: yes",
+    "prerequisites": "ELEC 224",
+    "corequisites": "N/A",
+    "offering_term": "Fall (F)",
+    "CEAB": "Mathematics: 12\nNatural Sciences: 0\nComplementary Studies: 0\nEngineering Science: 36\nEngineering Design: 0",
+    "offering_faculty": "Smith Engineering",
+    "clo": "1. Relate analog and discrete-time signals in terms of the sampling theorem.Represent and analyse discrete-time signals in time and frequency domains.\n2. Represent and analyse discrete-time signals in time and frequency domains.\n3. Characterize signal transformations as systems and in terms of system properties.\n4. Characterize LTI systems in time, frequency, and z domains.\n5. Experimentally investigate the effects of sampling, choice of sampling frequency, and practical reconstruction.\n6. Apply discrete Fourier transform to generate spectrograms for spectral analysis of complex signals.",
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
+ },
+
+{
+    "code": "ELEC 326",
+    "title": "Probability & Random Processes",
+    "units": "3.50",
+    "description": "This course provides an introduction to probabilistic models and methods for addressing uncertainty and variability in engineering applications. Topics include sample spaces and events, axioms of probability, conditional probability, independence, discrete and continuous random variables, probability density and cumulative distribution functions, functions of random variables, and random processes.",
+    "hourly_breakdown": "Lec: Yes, Lab: No, Tut: yes",
+    "prerequisites": "APSC 171",
+    "corequisites": "N/A",
+    "offering_term": "Fall (F)",
+    "CEAB": "Mathematics: 36\nNatural Sciences: 0\nComplementary Studies: 0\nEngineering Science: 6\nEngineering Design: 0",
+    "offering_faculty": "Smith Engineering",
+    "clo": "1. dDescribe different types of random variables and identify important distributions.\n2. Discuss the law of large numbers and asymptotic behaviours, and the concept of information and entropy.\n3. Characterize and identify distribution of functions of multiple random variables and well-known random and point processes.\n4. Apply probability theory for modeling uncertainties involved in engineering problems.\n5. Solve problems involving probably with conditional probabilities.\n6. Calculate different statistics of random variables by manipulating one and two random variables and working with joint distributions.",
+    "num_reviews": 0,
+    "num_rating": null,
+    "professor": null,
+    "difficulty": null,
+    "usefulness": null,
+    "workload": null
  }
 ]
