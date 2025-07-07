@@ -23,6 +23,9 @@ app.use("/api/v1/reviews", reviews);
 //delegating course-related requests to a seperate file called courses.js
 app.use("/api/v1/courses", courses);
 
+//delegating professor-related requests to a seperate file called courses.js
+app.use("/api/v1/professors", professors);
+
 /* This is the "catch all" route, where it will run if non of the other routes matched. Responds with a 404 Not Found status, and a JSON error message */
 app.use("/", (req, res) => 
     res.status(404).json({error: "not found"}))
