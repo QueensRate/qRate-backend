@@ -17,7 +17,7 @@ export default class ReviewsController {
             workload,
             teaching,
             comment,
-            user, // e.g., user = { name: "John Doe", userId: "abc123" }
+            user
           } = req.body;
       
           // Validate required fields
@@ -32,13 +32,13 @@ export default class ReviewsController {
             courseName,
             instructor,
             term,
-            overallRating: overallRating?.[0] || 0,
-            difficulty: difficulty?.[0] || 0,
-            usefulness: usefulness?.[0] || 0,
-            workload: workload?.[0] || 0,
-            teaching: teaching?.[0] || 0,
+            overallRating: overallRating ?? 0,
+            difficulty: difficulty ?? 0,
+            usefulness: usefulness ?? 0,
+            workload: workload ?? 0,
+            teaching: teaching ?? 0,
             comment,
-            timestamp: new Date(), // optional: store when the review was created
+            timestamp: new Date(), 
           };
       
           const reviewResponse = await CourseReviewsDAO.addReview(
