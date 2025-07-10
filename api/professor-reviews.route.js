@@ -5,7 +5,7 @@ import ProfessorReviewsCtrl from "./professor-reviews.controller.js" // importin
 const router = express.Router()
 
 /*
-GET /api/v1/professors/search/?DrSmith
+GET /api/v1/professors/search/DrSmith
 Returns all reviews for a specific professor.
 This assumes the professor's name is passed as a route parameter.
 */

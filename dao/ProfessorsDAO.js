@@ -1,86 +1,35 @@
-import mongodb from "mongodb"
+let professorsCollection;
 
-const ObjectId = mongodb.ObjectId
-
-let professorReviews // global variable to store the MongoDB collection reference
-
-export default class ProfessorReviewsDAO {
-
-  // Initialize the database connection and get the "professor-reviews" collection
+export default class ProfessorsDAO {
   static async injectDB(conn) {
-    if (professorReviews) {
-      return
-    }
+    if (professorsCollection) return;
     try {
-      professorReviews = await conn.db("reviews").collection("professor-reviews")
+      professorsCollection = await conn.db("qrate").collection("professors");
     } catch (e) {
-      console.error(`Unable to establish collection handles in ProfessorReviewsDAO: ${e}`)
+      console.error(`Unable to establish professors collection handle: ${e}`);
     }
   }
 
-  // Add a new professor review
-  static async addReview(professorName, user, review) {
+  static async getProfessors() {
     try {
-      const reviewDoc = {
-        professorName: professorName,
-        user: user,
-        review: review
-      }
+      const professors = await professorsCollection.find({}).toArray();
 
-      return await professorReviews.insertOne(reviewDoc)
+      return professors.map((prof) => ({
+        id: prof._id,
+        name: prof.name,
+        courses_teaching: prof.courses_teaching || [],
+        phone: prof.phone || "N/A",
+        degrees: prof.degrees || "N/A",
+        professor_type: prof.professor_type || "N/A",
+        faculty: prof.faculty || "N/A",
+        email: prof.email || "N/A",
+        office: prof.office || "N/A",
+        expertise: prof.expertise || [],
+        biography: prof.biography || "Biography not available.",
+      }));
     } catch (e) {
-      console.error(`Unable to post professor review: ${e}`)
-      return { error: e }
-    }
-  }
-
-  // Get a single review by its ObjectId
-  static async getReview(reviewId) {
-    try {
-      return await professorReviews.findOne({ _id: ObjectId(reviewId) })
-    } catch (e) {
-      console.error(`Unable to get professor review: ${e}`)
-      return { error: e }
-    }
-  }
-
-  // Update a professor review by ID
-  static async updateReview(reviewId, user, review) {
-    try {
-      const updateResponse = await professorReviews.updateOne(
-        { _id: ObjectId(reviewId) },
-        { $set: { user: user, review: review } }
-      )
-
-      return updateResponse
-    } catch (e) {
-      console.error(`Unable to update professor review: ${e}`)
-      return { error: e }
-    }
-  }
-
-  // Delete a professor review by ID
-  static async deleteReview(reviewId) {
-    try {
-      const deleteResponse = await professorReviews.deleteOne({
-        _id: ObjectId(reviewId)
-      })
-
-      return deleteResponse
-    } catch (e) {
-      console.error(`Unable to delete professor review: ${e}`)
-      return { error: e }
-    }
-  }
-
-  // Get all reviews for a specific professor
-  static async getReviewsByProfessorName(professorName) {
-    try {
-      const cursor = await professorReviews.find({ professorName: professorName })
-      return cursor.toArray()
-    } catch (e) {
-      console.error(`Unable to get reviews for professor: ${e}`)
-      return { error: e }
+      console.error(`Unable to fetch professors: ${e}`);
+      return [];
     }
   }
 }

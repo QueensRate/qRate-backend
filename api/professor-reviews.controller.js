@@ -1,4 +1,4 @@
-import ProfessorsDAO from "../dao/ProfessorsDAO.js"
+import ProfessorReviewsDAO from "../dao/ProfessorReviewsDAO.js"
 
 export default class ProfessorReviewsController {
 
@@ -39,7 +39,7 @@ export default class ProfessorReviewsController {
         timestamp: new Date()
       };
 
-      const reviewResponse = await ProfessorsDAO.addReview(
+      const reviewResponse = await ProfessorReviewsDAO.addReview(
         professorName,
         user,
         review
@@ -65,7 +65,7 @@ export default class ProfessorReviewsController {
   static async apiGetReview(req, res, next) {
     try {
       let id = req.params.id || {};
-      let review = await ProfessorsDAO.getReview(id);
+      let review = await ProfessorReviewsDAO.getReview(id);
 
       if (!review) {
         res.status(404).json({ error: "Not found" });
@@ -86,7 +86,7 @@ export default class ProfessorReviewsController {
       const review = req.body.review;
       const user = req.body.user;
 
-      const reviewResponse = await ProfessorsDAO.updateReview(
+      const reviewResponse = await ProfessorReviewsDAO.updateReview(
         reviewId,
         user,
         review
@@ -112,7 +112,7 @@ export default class ProfessorReviewsController {
   static async apiDeleteReview(req, res, next) {
     try {
       const reviewId = req.params.id;
-      const reviewResponse = await ProfessorsDAO.deleteReview(reviewId);
+      const reviewResponse = await ProfessorReviewsDAO.deleteReview(reviewId);
 
       if (reviewResponse.deletedCount === 0) {
         return res.status(404).json({ error: "Review not found" });

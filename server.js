@@ -6,7 +6,7 @@ to need to import it into our server.js file. */
 import reviews from "./api/reviews.route.js";
 // importing the courses route file, which will handle all course-related requests
 import courses from "./api/courses.route.js";
-
+import professors from "./api/professors.route.js"
 import professorReviews from "./api/professor-reviews.route.js";
 
 //creating an instance of the express application...app is the web server where we're going to define what happens when requests come in
@@ -25,7 +25,9 @@ app.use("/api/v1/reviews", reviews);
 //delegating course-related requests to a seperate file called courses.js
 app.use("/api/v1/courses", courses);
 
-app.use("/api/v1/professors", professorReviews);
+app.use("/api/v1/professors", professors)
+
+app.use("/api/v1/professor-reviews", professorReviews);
 
 /* This is the "catch all" route, where it will run if non of the other routes matched. Responds with a 404 Not Found status, and a JSON error message */
 app.use("/", (req, res) => 
