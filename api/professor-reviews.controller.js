@@ -132,11 +132,8 @@ export default class ProfessorReviewsController {
       }
   
       const reviews = await ProfessorReviewsDAO.getReviewsByProfessorName(name);
-      if (!reviews || reviews.length === 0) {
-        return res.status(404).json({ error: "No reviews found" });
-      }
   
-      res.json(reviews);
+      res.json(reviews || []);
     } catch (e) {
       console.error(`apiSearchByName error: ${e}`);
       res.status(500).json({ error: e.message });
