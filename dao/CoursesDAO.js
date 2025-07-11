@@ -16,27 +16,35 @@ export default class CoursesDAO {
 
   static async getCourses() {
     try {
+      // Fetch all courses
       const courses = await coursesCollection.find({}).toArray();
-
+  
+      // Aggregate review stats grouped by courseId (which is course code string)
       const courseStats = await reviewsCollection.aggregate([
+        {
+          $match: {
+            "review.overallRating": { $exists: true, $gt: 0 }
+          }
+        },
         {
           $group: {
             _id: "$courseId",
             num_reviews: { $sum: 1 },
-            avg_rating: { $avg: "$overallRating" },
-            difficulty: { $avg: "$difficulty" },
-            usefulness: { $avg: "$usefulness" },
-            workload: { $avg: "$workload" },
+            avg_rating: { $avg: "$review.overallRating" },
+            difficulty: { $avg: "$review.difficulty" },
+            usefulness: { $avg: "$review.usefulness" },
+            workload: { $avg: "$review.workload" },
           },
         },
-      ]).toArray();
-
-      // Convert stats to map for easier lookup
+      ]).toArray();      
+  
+      // Map aggregated stats by course code for quick lookup
       const statsMap = courseStats.reduce((map, stat) => {
         map[stat._id] = stat;
         return map;
       }, {});
-
+  
+      // Merge aggregated stats into each course object
       return courses.map(course => {
         const stats = statsMap[course.code] || {};
         return {
@@ -53,7 +61,7 @@ export default class CoursesDAO {
       console.error(`Unable to fetch courses: ${e}`);
       return [];
     }
-  }
+  }  
 
   static async getCourseById(id) {
     try {
