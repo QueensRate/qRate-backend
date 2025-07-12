@@ -117,17 +117,12 @@ export default class CourseReviewsDAO {
     // method which returns all reviews for a specific course
     static async getReviewsByCourseId(courseId) {
         try {
-            //creating a variable called cursor which finds all documents in the collection with the parameters of the specific course
-            //we use find() which will return a pointer to a list of all results
-            const cursor = await reviews.find({ courseId: parseInt(courseId) })
-
-            //converts the pointer to the list into an array of review documents and returns them
-            return cursor.toArray()
+            // courseId is string, e.g., "ELEC 221"
+            const cursor = await reviews.find({ courseId: courseId });
+            return cursor.toArray();
+        } catch (e) {
+            console.error(`Unable to get reviews: ${e}`);
+            return { error: e };
         }
-        catch (e) {
-            //error logging
-            console.error(`Unable to get review: ${e}`)
-            return { error: e }
-        }
-    }
+    }    
 }

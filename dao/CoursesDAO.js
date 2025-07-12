@@ -16,27 +16,35 @@ export default class CoursesDAO {
 
   static async getCourses() {
     try {
+      // Fetch all courses
       const courses = await coursesCollection.find({}).toArray();
 
+      // Aggregate review stats grouped by courseId (which is course code string)
       const courseStats = await reviewsCollection.aggregate([
+        {
+          $match: {
+            "review.overallRating": { $exists: true, $gt: 0 }
+          }
+        },
         {
           $group: {
             _id: "$courseId",
             num_reviews: { $sum: 1 },
-            avg_rating: { $avg: "$overallRating" },
-            difficulty: { $avg: "$difficulty" },
-            usefulness: { $avg: "$usefulness" },
-            workload: { $avg: "$workload" },
+            avg_rating: { $avg: "$review.overallRating" },
+            difficulty: { $avg: "$review.difficulty" },
+            usefulness: { $avg: "$review.usefulness" },
+            workload: { $avg: "$review.workload" },
           },
         },
       ]).toArray();
 
-      // Convert stats to map for easier lookup
+      // Map aggregated stats by course code for quick lookup
       const statsMap = courseStats.reduce((map, stat) => {
         map[stat._id] = stat;
         return map;
       }, {});
 
+      // Merge aggregated stats into each course object
       return courses.map(course => {
         const stats = statsMap[course.code] || {};
         return {
@@ -66,14 +74,14 @@ export default class CoursesDAO {
         {
           $group: {
             _id: "$courseId",
-            avg_rating: { $avg: "$overallRating" },
-            difficulty: { $avg: "$difficulty" },
-            usefulness: { $avg: "$usefulness" },
-            workload: { $avg: "$workload" },
-            teaching: { $avg: "$teaching" },
+            avg_rating: { $avg: "$review.overallRating" },
+            difficulty: { $avg: "$review.difficulty" },
+            usefulness: { $avg: "$review.usefulness" },
+            workload: { $avg: "$review.workload" },
+            teaching: { $avg: "$review.teaching" },
             totalReviews: { $sum: 1 },
             ratingDistribution: {
-              $push: "$overallRating"
+              $push: "$review.overallRating"
             }
           }
         }
@@ -104,15 +112,15 @@ export default class CoursesDAO {
         ratingDistribution: distribution,
         reviews: reviews.map(r => ({
           id: r._id,
-          rating: r.overallRating,
-          difficulty: r.difficulty,
-          usefulness: r.usefulness,
-          workload: r.workload,
-          teaching: r.teaching,
-          comment: r.comment,
-          instructor: r.instructor,
-          term: r.term,
-          date: new Date(r.createdAt).toLocaleDateString(),
+          rating: r.review?.overallRating,
+          difficulty: r.review?.difficulty,
+          usefulness: r.review?.usefulness,
+          workload: r.review?.workload,
+          teaching: r.review?.teaching,
+          comment: r.review?.comment,
+          instructor: r.review?.instructor,
+          term: r.review?.term,
+          date: new Date(r.review?.timestamp).toLocaleDateString(),
           helpful: r.helpful || 0,
           notHelpful: r.notHelpful || 0,
         })),
