@@ -41,11 +41,11 @@ export default class ReviewsController {
             timestamp: new Date(), 
           };
       
-          const reviewResponse = await CourseReviewsDAO.addReview(
-            courseCode, // or use a unique courseId if you have one
+        const reviewResponse = await CourseReviewsDAO.addReview(
+            courseCode,  // this is string course code, matching courseId field in DB
             user,
             review
-          );
+        );
       
           res.json({ status: "success" });
         } catch (e) {
