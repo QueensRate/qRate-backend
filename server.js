@@ -8,6 +8,7 @@ import reviews from "./api/reviews.route.js";
 import courses from "./api/courses.route.js";
 import professors from "./api/professors.route.js"
 import professorReviews from "./api/professor-reviews.route.js";
+import auth from "./api/auth.route.js";
 
 //creating an instance of the express application...app is the web server where we're going to define what happens when requests come in
 const app = express();  
@@ -28,6 +29,12 @@ app.use("/api/v1/courses", courses);
 app.use("/api/v1/professors", professors)
 
 app.use("/api/v1/professor-reviews", professorReviews);
+
+console.log('Loading auth routes:', auth);
+app.use("/api/v1/auth", auth);
+
+
+
 
 /* This is the "catch all" route, where it will run if non of the other routes matched. Responds with a 404 Not Found status, and a JSON error message */
 app.use("/", (req, res) => 
