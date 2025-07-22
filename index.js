@@ -12,7 +12,7 @@ import ProfessorsDAO from "./dao/ProfessorsDAO.js"
 const MongoClient = mongodb.MongoClient;
 
 const uri = process.env.MONGO_URI; //loading the full mongoDB connection string from env variable
-const port = 8000;  //defines the port that the express server will be listening on
+const port = process.env.PORT || 8000;  //defines the port that the express server will be listening on
 
 //trying to connect to MongoDB with uri (which is the connection string)
 MongoClient.connect(
