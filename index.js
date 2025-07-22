@@ -20,7 +20,6 @@ MongoClient.connect(
     {
         maxPoolSize: 50,    //maximum number of concurrent DB connections (for performance)
         wtimeoutMS: 2500,   //write timeout if mongo doesnt respond in time
-        useNewUrlParser: true 
     }) 
     /* using MongoClient.connect() is a function that will return a promise. This doesn't mean it 
        returns the final result, but rather, it will return a promise object that represents the 
