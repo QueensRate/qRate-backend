@@ -16,27 +16,23 @@ const port = process.env.PORT || 8000;  //defines the port that the express serv
 
 //trying to connect to MongoDB with uri (which is the connection string)
 (async () => {
-  try {
-    const client = await MongoClient.connect(process.env.MONGO_URI, {
-      maxPoolSize: 50,
-      wtimeoutMS: 2500,
-    });
+    try {
+        const client = await MongoClient.connect(process.env.MONGO_URI, {
+            maxPoolSize: 50,
+            wtimeoutMS: 2500,
+        });
 
-    await CourseReviewsDAO.injectDB(client);
-    await ProfessorReviewsDAO.injectDB(client);
-    await CoursesDAO.injectDB(client);
-    await ProfessorsDAO.injectDB(client);
+        await CourseReviewsDAO.injectDB(client);
+        await ProfessorReviewsDAO.injectDB(client);
+        await CoursesDAO.injectDB(client);
+        await ProfessorsDAO.injectDB(client);
 
-    app.get("/api/test", (req, res) => {
-        res.send("Backend is working!");
-      });      
-
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  } catch (e) {
-    console.error("Failed to start server:", e);
-    process.exit(1);
-  }
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
+        });
+    } catch (e) {
+        console.error("Failed to start server:", e);
+        process.exit(1);
+    }
 })();
 
