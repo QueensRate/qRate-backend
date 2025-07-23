@@ -15,6 +15,7 @@ const app = express();
 
 app.use(cors({
   origin: ["https://victorious-sea-0c594450f.1.azurestaticapps.net", "http://localhost:8080"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true // if needed
 }));
 
