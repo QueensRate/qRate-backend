@@ -27,6 +27,10 @@ const port = process.env.PORT || 8000;  //defines the port that the express serv
     await CoursesDAO.injectDB(client);
     await ProfessorsDAO.injectDB(client);
 
+    app.get("/api/test", (req, res) => {
+        res.send("Backend is working!");
+      });      
+
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
