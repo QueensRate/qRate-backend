@@ -1,11 +1,14 @@
-import express from 'express';
+// api/auth.route.js
+import express from "express";
+import AuthController from "./auth.controller.js";
+
 const router = express.Router();
-const users = [{ email: 'test@queensu.ca', password: 'password123' }];
-router.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) return res.status(400).json({ error: 'Email and password are required.' });
-  if (!email.endsWith('@queensu.ca')) return res.status(400).json({ error: 'Please use a valid @queensu.ca email address.' });
-  const user = users.find(u => u.email === email && u.password === password);
-  return user ? res.status(200).json({ message: 'Login successful', user: { email: user.email } }) : res.status(401).json({ error: 'Invalid email or password.' });
-});
+
+router.post("/login", AuthController.apiLogin);
+router.post("/register", AuthController.apiRegister);
+router.get("/verify/:token", AuthController.apiVerify);
+
+// Temporary test endpoint for email debugging
+router.get("/test-email", AuthController.apiTestEmail); // Use the new controller method
+
 export default router;

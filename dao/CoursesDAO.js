@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 let coursesCollection;
-let reviewsCollection; // Added to fetch related reviews
+let reviewsCollection;
 
 export default class CoursesDAO {
   static async injectDB(conn) {
@@ -14,12 +14,19 @@ export default class CoursesDAO {
     }
   }
 
-  static async getCourses() {
+  static async getCourses({ page = 1, limit = 10 } = {}) {
     try {
-      // Fetch all courses
-      const courses = await coursesCollection.find({}).toArray();
+      const skip = (page - 1) * limit;
 
-      // Aggregate review stats grouped by courseId (which is course code string)
+      const coursesCursor = await coursesCollection
+        .find({})
+        .skip(skip)
+        .limit(parseInt(limit));
+
+      const courses = await coursesCursor.toArray();
+      const totalCount = await coursesCollection.countDocuments();
+
+      // Aggregate review stats grouped by courseId (course.code)
       const courseStats = await reviewsCollection.aggregate([
         {
           $match: {
@@ -34,18 +41,18 @@ export default class CoursesDAO {
             difficulty: { $avg: "$review.difficulty" },
             usefulness: { $avg: "$review.usefulness" },
             workload: { $avg: "$review.workload" },
-          },
-        },
+          }
+        }
       ]).toArray();
 
-      // Map aggregated stats by course code for quick lookup
+      // Map stats to course codes
       const statsMap = courseStats.reduce((map, stat) => {
         map[stat._id] = stat;
         return map;
       }, {});
 
-      // Merge aggregated stats into each course object
-      return courses.map(course => {
+      // Merge stats into courses
+      const enrichedCourses = courses.map(course => {
         const stats = statsMap[course.code] || {};
         return {
           ...course,
@@ -57,16 +64,17 @@ export default class CoursesDAO {
           workload: stats.workload ? stats.workload.toFixed(1) : "N/A",
         };
       });
+
+      return { courses: enrichedCourses, totalCount };
     } catch (e) {
       console.error(`Unable to fetch courses: ${e}`);
-      return [];
+      return { courses: [], totalCount: 0 };
     }
   }
 
   static async getCourseById(id) {
     try {
       const course = await coursesCollection.findOne({ _id: new ObjectId(id) });
-
       if (!course) return null;
 
       const stats = await reviewsCollection.aggregate([
@@ -89,7 +97,6 @@ export default class CoursesDAO {
 
       const stat = stats[0] || {};
       const distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-
       if (stat.ratingDistribution) {
         stat.ratingDistribution.forEach(rating => {
           const rounded = Math.round(rating);

@@ -3,7 +3,7 @@ let reviewsCollection;
 
 export default class ProfessorsDAO {
   static async injectDB(conn) {
-    if (professorsCollection) return;
+    if (professorsCollection && reviewsCollection) return;
     try {
       professorsCollection = await conn.db("qrate").collection("professors");
       reviewsCollection = await conn.db("reviews").collection("professor-reviews");
@@ -12,31 +12,42 @@ export default class ProfessorsDAO {
     }
   }
 
-  static async getProfessors() {
+  static async getProfessors({ page = 1, limit = 10 }) {
     try {
-      const professors = await professorsCollection.find({}).toArray();
-  
-      // Match new review schema
+      const skip = (page - 1) * limit;
+
+      // Get total count before pagination
+      const totalCount = await professorsCollection.countDocuments();
+
+      // Get paginated professors
+      const professors = await professorsCollection
+        .find({})
+        .skip(skip)
+        .limit(limit)
+        .toArray();
+
+      // Get review stats
       const stats = await reviewsCollection.aggregate([
         {
           $group: {
-            _id: "$review.professorName", // Match field here
+            _id: "$review.professorName",
             reviews: { $sum: 1 },
             rating: { $avg: "$review.overallRating" },
             difficulty: { $avg: "$review.difficulty" },
             helpfulness: { $avg: "$review.helpfulness" },
-            clarity: { $avg: "$review.clarity" }
-          }
-        }
+            clarity: { $avg: "$review.clarity" },
+          },
+        },
       ]).toArray();
-  
-      // Create a lookup map for faster access
+
+      // Create a lookup map for review stats
       const statsMap = stats.reduce((map, item) => {
         map[item._id] = item;
         return map;
       }, {});
-  
-      return professors.map((prof) => {
+
+      // Merge professor info with review stats
+      const enrichedProfessors = professors.map((prof) => {
         const s = statsMap[prof.name] || {};
         return {
           id: prof._id,
@@ -57,9 +68,14 @@ export default class ProfessorsDAO {
           reviews: s.reviews || 0,
         };
       });
+
+      return {
+        professors: enrichedProfessors,
+        totalCount,
+      };
     } catch (e) {
       console.error(`Unable to fetch professors: ${e}`);
-      return [];
+      return { professors: [], totalCount: 0 };
     }
-  }  
+  }
 }

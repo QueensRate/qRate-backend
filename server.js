@@ -1,3 +1,5 @@
+import dotenv from "dotenv"
+dotenv.config(); 
 import express from "express" // bringing in the express library so we can use it to create the server 
 import cors from "cors"; // bringing in CORS middleware, so that frontend can talk to backend
 /* 
@@ -11,12 +13,13 @@ import professorReviews from "./api/professor-reviews.route.js";
 import auth from "./api/auth.route.js";
 
 //creating an instance of the express application...app is the web server where we're going to define what happens when requests come in
-const app = express();
+const app = express();  
 
+//applying CORS middleware to every incoming request, i.e allowing frontend-backend comms
 app.use(cors({
-  origin: ["https://victorious-sea-0c594450f.1.azurestaticapps.net", "http://localhost:8080"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true // if needed
+    origin: ["https://victorious-sea-0c594450f.1.azurestaticapps.net", "http://localhost:8080"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true // if needed
 }));
 
 //enabling express to automatically parse incoming JSON bodies
